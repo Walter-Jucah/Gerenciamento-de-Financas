@@ -1,0 +1,20 @@
+<h2>Lista de Receitas</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Data</th>
+    <th>Descrição</th>
+    <th>Valor</th>
+    <th>Categoria</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let receita of receitas">
+    <td>{{ receita.data | date }}</td>
+    <td>{{ receita.descricao }}</td>
+    <td>{{ receita.valor | currency }}</td>
+    <td>{{ receita.categoria?.nome }}</td>
+  </tr>
+  </tbody>
+</table>

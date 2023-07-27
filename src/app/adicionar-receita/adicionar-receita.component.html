@@ -1,1 +1,30 @@
-<p>adicionar-receita works!</p>
+<h2>Adicionar Nova Receita</h2>
+
+<form (submit)="adicionarReceita()">
+  <div class="form-group">
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data" [(ngModel)]="novaReceita.data" required>
+  </div>
+  <div class="form-group">
+    <label for="descricao">Descrição:</label>
+    <input type="text" id="descricao" name="descricao" [(ngModel)]="novaReceita.descricao" required>
+  </div>
+  <div class="form-group">
+    <label for="valor">Valor:</label>
+    <input type="number" id="valor" name="valor" [(ngModel)]="novaReceita.valor" required>
+  </div>
+  <div class="form-group">
+    <label for="categoria">Categoria:</label>
+    <select id="categoria" name="categoria" [(ngModel)]="novaReceita.categoria" required>
+      <option value="Alimentação">Alimentação</option>
+      <option value="Transporte">Transporte</option>
+      <option value="Educação">Educação</option>
+      <option value="Saúde">Saúde</option>
+      <option value="Lazer">Lazer</option>
+      <option value="Outros">Outros</option>
+    </select>
+  </div>
+  <button type="submit">Adicionar Receita</button>
+</form>
+
+<button (click)="voltarParaLista()">Voltar</button>

@@ -1,1 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos gerais */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para os componentes */
+
+h1 {
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group select {
+    appearance: none;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg fill='%23555555' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 5.13l1.65 1.65.82-.82L12 3.5l-2.47 2.46.82.82L12 5.13zm-.82.82l.82.82L9.75 9.08l-.82-.82L11.18 6zm-1.64.82L6 12l3.54 3.54.82-.82L7.18 12l2.46-2.47-.82-.82zm3.54 0l2.47 2.47.82-.82L16.82 12l-2.47 2.47.82.82L18 12zm-6.36 3.29l.82.82L6 18.87l.82-.82L10.46 12 6.82 8.36l-.82.82zm5.64.82l.82.82L14.87 18l.82-.82L16.29 12l3.65-3.64-.82-.82z'/%3E%3C/svg%3E");
+    background-position: right 10px top 50%;
+    background-size: 10px;
+    background-repeat: no-repeat;
+}
+
+button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

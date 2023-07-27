@@ -1,5 +1,5 @@
-// Importações necessárias
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Receita } from '../models/receita';
 import { ReceitaService } from '../services/receita.service';
 
@@ -9,21 +9,44 @@ import { ReceitaService } from '../services/receita.service';
   styleUrls: ['./lista-receitas.component.css']
 })
 export class ListaReceitasComponent implements OnInit {
-
   receitas: Receita[] = [];
 
-  // Construtor e injeção do serviço ReceitaService
-  constructor(private receitaService: ReceitaService) { }
+  constructor(private receitaService: ReceitaService, private router: Router) {}
 
-  // Método ngOnInit()
-  ngOnInit(): void {
+  ngOnInit() {
     this.carregarReceitas();
   }
 
-  // Método privado para carregar as receitas do serviço
-  private carregarReceitas(): void {
-    this.receitaService.getReceitas().subscribe((receitas: Receita[]) => {
-      this.receitas = receitas;
-    });
+  carregarReceitas() {
+    this.receitaService.getReceitas().subscribe(
+      (receitas) => {
+        this.receitas = receitas;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  verDetalhes(id: number) {
+    this.router.navigate(['/detalhes', id]);
+  }
+
+  editarReceita(id: number) {
+    this.router.navigate(['/editar', id]);
+  }
+
+  excluirReceita(id: number) {
+    if (confirm('Deseja realmente excluir esta receita?')) {
+      this.receitaService.excluirReceita(id).subscribe(
+        () => {
+          // Atualiza a lista de receitas após a exclusão
+          this.carregarReceitas();
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
   }
 }

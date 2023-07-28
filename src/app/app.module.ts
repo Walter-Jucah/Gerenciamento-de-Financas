@@ -9,6 +9,8 @@ import { ListaReceitasComponent } from './lista-receitas/lista-receitas.componen
 import { DetalhesReceitaComponent } from './detalhes-receita/detalhes-receita.component';
 import { AdicionarReceitaComponent } from './adicionar-receita/adicionar-receita.component';
 import { AtualizarReceitaComponent } from './atualizar-receita/atualizar-receita.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmacaoDialogComponent } from './confirmacao-dialog/confirmacao-dialog.component';
 
 @NgModule({
     declarations: [
@@ -16,13 +18,15 @@ import { AtualizarReceitaComponent } from './atualizar-receita/atualizar-receita
         ListaReceitasComponent,
         DetalhesReceitaComponent,
         AdicionarReceitaComponent,
-        AtualizarReceitaComponent
+        AtualizarReceitaComponent,
+        ConfirmacaoDialogComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        AppRoutingModule, // Certifique-se de importar o AppRoutingModule aqui
+        AppRoutingModule,
+        MatDialogModule
     ],
     providers: [],
     bootstrap: [AppComponent]

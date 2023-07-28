@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'receitas/', component: ListaReceitasComponent },
   { path: 'receitas/nova', component: AdicionarReceitaComponent },
   { path: 'receitas/detalhes/:id', component: DetalhesReceitaComponent },
-  { path: 'receitas/atualizar/:id', component: AtualizarReceitaComponent },
+  { path: 'receitas/editar/:id', component: AtualizarReceitaComponent },
 ];
 
 

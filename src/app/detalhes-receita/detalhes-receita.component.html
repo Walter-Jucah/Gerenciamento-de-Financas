@@ -1,10 +1,10 @@
-
 <div *ngIf="receita">
   <h2>Detalhes da Receita</h2>
   <p><strong>Data:</strong> {{ receita.data | date }}</p>
   <p><strong>Descrição:</strong> {{ receita.descricao }}</p>
   <p><strong>Valor:</strong> {{ receita.valor | currency }}</p>
   <p><strong>Categoria:</strong> {{ receita.categoria.nome }}</p>
+  <button (click)="editarReceita(receita.id)">Editar</button> <!-- Botão para editar a receita -->
 </div>
 
 <div *ngIf="!receita">

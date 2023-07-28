@@ -1,0 +1,8 @@
+mat-dialog-content {
+  padding: 20px;
+}
+
+mat-dialog-actions {
+  padding: 10px 20px;
+  justify-content: flex-end;
+}

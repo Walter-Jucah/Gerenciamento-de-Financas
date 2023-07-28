@@ -1,10 +1,25 @@
 <h2>Atualizar Receita</h2>
 
-<form (submit)="atualizarReceita()">
-    <!-- Adicione os campos do formulário para atualizar a receita -->
-    <!-- Use [(ngModel)] para vincular os campos aos atributos da receita -->
-    <!-- Adicione um botão de submit para enviar o formulário -->
-    <button type="submit">Atualizar Receita</button>
+<form (submit)="atualizarReceita()" *ngIf="receita">
+  <div class="form-group">
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data" [(ngModel)]="receita.data" required>
+  </div>
+  <div class="form-group">
+    <label for="descricao">Descrição:</label>
+    <input type="text" id="descricao" name="descricao" [(ngModel)]="receita.descricao" required>
+  </div>
+  <div class="form-group">
+    <label for="valor">Valor:</label>
+    <input type="number" id="valor" name="valor" [(ngModel)]="receita.valor" required>
+  </div>
+  <div class="form-group">
+    <label for="categoria">Categoria:</label>
+    <select id="categoria" name="categoria" [(ngModel)]="receita.categoria" required>
+      <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria.nome }}</option>
+    </select>
+  </div>
+  <button type="submit">Atualizar Receita</button>
 </form>
 
 <button (click)="voltarParaDetalhes()">Voltar</button>

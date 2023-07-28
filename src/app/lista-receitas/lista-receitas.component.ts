@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { Receita } from '../models/receita';
 import { ReceitaService } from '../services/receita.service';
+import {ConfirmacaoDialogComponent} from "../confirmacao-dialog/confirmacao-dialog.component";
 
 @Component({
   selector: 'app-lista-receitas',
@@ -11,7 +13,11 @@ import { ReceitaService } from '../services/receita.service';
 export class ListaReceitasComponent implements OnInit {
   receitas: Receita[] = [];
 
-  constructor(private receitaService: ReceitaService, private router: Router) {}
+  constructor(
+    private receitaService: ReceitaService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.carregarReceitas();
@@ -29,24 +35,30 @@ export class ListaReceitasComponent implements OnInit {
   }
 
   verDetalhes(id: number) {
-    this.router.navigate(['/detalhes', id]);
+    this.router.navigate(['/receitas/detalhes', id]);
   }
 
   editarReceita(id: number) {
-    this.router.navigate(['/editar', id]);
+    this.router.navigate(['/receitas/editar', id]);
   }
 
   excluirReceita(id: number) {
-    if (confirm('Deseja realmente excluir esta receita?')) {
-      this.receitaService.excluirReceita(id).subscribe(
-        () => {
-          // Atualiza a lista de receitas após a exclusão
-          this.carregarReceitas();
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-    }
+    const dialogRef = this.dialog.open(ConfirmacaoDialogComponent, {
+      width: '300px',
+      data: 'Deseja realmente excluir esta receita?', // Passa a mensagem de confirmação para o diálogo
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.receitaService.excluirReceita(id).subscribe(
+          () => {
+            this.carregarReceitas(); // Atualiza a lista de receitas após a exclusão
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
+      }
+    });
   }
 }

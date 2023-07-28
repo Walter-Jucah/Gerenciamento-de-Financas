@@ -19,6 +19,11 @@ export class DetalhesReceitaComponent implements OnInit {
   ngOnInit() {
     this.carregarDetalhesReceita();
   }
+  editarReceita(id: number) {
+    // Aqui você pode navegar para a página de edição, similar ao componente ListaReceitasComponent.
+    // Por exemplo:
+    // this.router.navigate(['/receitas/editar', id]);
+  }
 
   carregarDetalhesReceita() {
     const idParam = this.route.snapshot.paramMap.get('id');

@@ -14,9 +14,9 @@ export class AtualizarReceitaComponent implements OnInit {
   categorias: Categoria[] = [];
 
   constructor(
-      private route: ActivatedRoute,
-      private router: Router,
-      private receitaService: ReceitaService
+    private route: ActivatedRoute,
+    private router: Router,
+    private receitaService: ReceitaService
   ) {}
 
   ngOnInit() {
@@ -35,12 +35,12 @@ export class AtualizarReceitaComponent implements OnInit {
     if (idParam !== null) {
       const id = +idParam;
       this.receitaService.getReceitaById(id).subscribe(
-          (receita) => {
-            this.receita = receita;
-          },
-          (error) => {
-            console.error(error);
-          }
+        (receita) => {
+          this.receita = receita;
+        },
+        (error) => {
+          console.error(error);
+        }
       );
     }
   }
@@ -48,14 +48,14 @@ export class AtualizarReceitaComponent implements OnInit {
   atualizarReceita() {
     if (this.receita) {
       this.receitaService.atualizarReceita(this.receita).subscribe(
-          (receita) => {
-            console.log('Receita atualizada:', receita);
-            // Redirecionar de volta à página de detalhes da receita após a atualização
-            this.router.navigate(['/receitas/detalhes', receita.id]);
-          },
-          (error) => {
-            console.error('Erro ao atualizar receita:', error);
-          }
+        (receita) => {
+          console.log('Receita atualizada:', receita);
+          // Redirecionar de volta à página de detalhes da receita após a atualização
+          this.router.navigate(['/receitas/detalhes', receita.id]);
+        },
+        (error) => {
+          console.error('Erro ao atualizar receita:', error);
+        }
       );
     }
   }

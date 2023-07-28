@@ -8,7 +8,7 @@ import { Categoria } from '../models/categoria';
   providedIn: 'root'
 })
 export class ReceitaService {
-  private apiUrl = './api/receitas/'; // Substitua pela URL correta da sua API
+  private apiUrl = 'https://gerenciamentoapi.onrender.com/api/receitas/'; // Substitua pela URL correta da sua API
 
   constructor(private http: HttpClient) {}
 
@@ -27,7 +27,7 @@ export class ReceitaService {
   }
 
   getCategorias(): Observable<Categoria[]> {
-    const url = './api/categorias/' // Substitua pela URL correta da sua API
+    const url = 'https://gerenciamentoapi.onrender.com/api/categorias/' // Substitua pela URL correta da sua API
     return this.http.get<Categoria[]>(url);
   }
 

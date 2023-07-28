@@ -6,12 +6,13 @@ import { AdicionarReceitaComponent } from './adicionar-receita/adicionar-receita
 import { AtualizarReceitaComponent } from './atualizar-receita/atualizar-receita.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/receitas/', pathMatch: 'full' },
+  { path: '', redirectTo: 'receitas/', pathMatch: 'full' },
   { path: 'receitas/', component: ListaReceitasComponent },
   { path: 'receitas/nova', component: AdicionarReceitaComponent },
   { path: 'receitas/detalhes/:id', component: DetalhesReceitaComponent },
   { path: 'receitas/atualizar/:id', component: AtualizarReceitaComponent },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

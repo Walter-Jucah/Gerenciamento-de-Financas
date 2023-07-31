@@ -5,13 +5,13 @@ export class Receita {
   data: Date;
   descricao: string;
   valor: number;
-  categoria: Categoria;
+  categoria: Categoria; // Corrigir para o tipo "Categoria"
 
-  constructor() {
-    this.id = 0;
-    this.data = new Date();
-    this.descricao = '';
-    this.valor = 0;
-    this.categoria = new Categoria(1, 'Categoria Padrão');
+  constructor(id: number, data: Date, descricao: string, valor: number, categoria: Categoria) {
+    this.id = id;
+    this.data = data;
+    this.descricao = descricao;
+    this.valor = valor;
+    this.categoria = categoria;
   }
 }

@@ -4,11 +4,12 @@ import {delay, Observable, of} from 'rxjs';
 import { Receita } from '../models/receita';
 import { Categoria } from '../models/categoria';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ReceitaService {
-  private apiUrl = 'https://gerenciamentoapi.onrender.com/api/receitas/'; // Substitua pela URL correta da sua API
+  private apiUrl = 'http://localhost:8080/api/receitas/'; // Substitua pela URL correta da sua API
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +18,7 @@ export class ReceitaService {
   }
 
   getReceitaById(id: number): Observable<Receita | undefined> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}${id}`;
     return this.http.get<Receita>(url);
   }
 
@@ -27,17 +28,20 @@ export class ReceitaService {
   }
 
   getCategorias(): Observable<Categoria[]> {
-    const url = 'https://gerenciamentoapi.onrender.com/api/categorias/' // Substitua pela URL correta da sua API
+    const url =
+      // Substitua pela URL correta da sua API
+      //'https://gerenciamentoapi.onrender.com/api/categorias/'
+      'http://localhost:8080/api/categorias/'
     return this.http.get<Categoria[]>(url);
   }
 
   excluirReceita(id: number): Observable<void> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}${id}`;
     return this.http.delete<void>(url);
   }
 
   atualizarReceita(receita: Receita): Observable<Receita> {
-    const url = `${this.apiUrl}/${receita.id}`;
+    const url = `${this.apiUrl}${receita.id}`;
     return this.http.put<Receita>(url, receita);
   }
 }

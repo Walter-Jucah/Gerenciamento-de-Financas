@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://gerenciamentoapi.onrender.com", // Substitua pela URL correta da sua API
+    "target": "http://localhost:8080/api/receitas/",
     "secure": false,
     "pathRewrite": {
       "^/api": ""

@@ -45,13 +45,17 @@ export class AtualizarReceitaComponent implements OnInit {
     }
   }
 
+
   atualizarReceita() {
     if (this.receita) {
       this.receitaService.atualizarReceita(this.receita).subscribe(
         (receita) => {
           console.log('Receita atualizada:', receita);
           // Redirecionar de volta à página de detalhes da receita após a atualização
-          this.router.navigate(['/receitas/detalhes', receita.id]);
+          this.router.navigate(['/receitas/detalhes', receita.id]).then(() => {
+            // Ação a ser executada após a navegação ser concluída (se necessário)
+            console.log('Navegação concluída.');
+          });
         },
         (error) => {
           console.error('Erro ao atualizar receita:', error);
@@ -59,6 +63,8 @@ export class AtualizarReceitaComponent implements OnInit {
       );
     }
   }
+
+
 
   voltarParaDetalhes() {
     // Redirecionar de volta à página de detalhes da receita

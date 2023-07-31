@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://gerenciamentoapi.onrender.com", // Substitua pela URL correta da sua API
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}

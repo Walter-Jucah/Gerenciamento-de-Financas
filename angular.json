@@ -63,7 +63,8 @@
               "browserTarget": "GerenciamentoFront:build:production"
             },
             "development": {
-              "browserTarget": "GerenciamentoFront:build:development"
+              "browserTarget": "GerenciamentoFront:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

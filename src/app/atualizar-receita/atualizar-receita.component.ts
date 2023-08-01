@@ -10,52 +10,55 @@ import { ReceitaService } from '../services/receita.service';
   styleUrls: ['./atualizar-receita.component.css']
 })
 export class AtualizarReceitaComponent implements OnInit {
-  receita: Receita | undefined;
+  receita: Receita = new Receita(1, new Date(), 'Descrição', 100, new Categoria(1, 'Nome da Categoria'));
   categorias: Categoria[] = [];
 
   constructor(
+    private receitaService: ReceitaService,
     private route: ActivatedRoute,
-    private router: Router,
-    private receitaService: ReceitaService
+    private router: Router
   ) {}
 
   ngOnInit() {
+    // Obter o ID da receita da rota atual
+    const id = +this.route.snapshot.paramMap.get('id')!;
+    // Carregar a receita com o ID obtido
+    this.carregarReceita(id);
+    // Carregar as categorias disponíveis
+    console.log('Carregando categorias...');
     this.carregarCategorias();
-    this.carregarDetalhesReceita();
+  }
+
+  carregarReceita(id: number) {
+    this.receitaService.getReceitaById(id).subscribe(
+      (receita) => {
+        this.receita = receita!;
+      },
+      (error) => {
+        console.error('Erro ao obter receita:', error);
+      }
+    );
   }
 
   carregarCategorias() {
-    this.receitaService.getCategorias().subscribe((categorias) => {
-      this.categorias = categorias;
-    });
+    this.receitaService.getCategorias().subscribe(
+      (categorias) => {
+        this.categorias = categorias;
+      },
+      (error) => {
+        console.error('Erro ao obter categorias:', error);
+      }
+    );
   }
-
-  carregarDetalhesReceita() {
-    const idParam = this.route.snapshot.paramMap.get('id');
-    if (idParam !== null) {
-      const id = +idParam;
-      this.receitaService.getReceitaById(id).subscribe(
-        (receita) => {
-          this.receita = receita;
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-    }
-  }
-
 
   atualizarReceita() {
     if (this.receita) {
+      this.receita.data = new Date(); // Update this line to set the correct Date object
       this.receitaService.atualizarReceita(this.receita).subscribe(
         (receita) => {
           console.log('Receita atualizada:', receita);
           // Redirecionar de volta à página de detalhes da receita após a atualização
-          this.router.navigate(['/receitas/detalhes', receita.id]).then(() => {
-            // Ação a ser executada após a navegação ser concluída (se necessário)
-            console.log('Navegação concluída.');
-          });
+          this.router.navigate(['/receitas/detalhes', receita.id]);
         },
         (error) => {
           console.error('Erro ao atualizar receita:', error);
@@ -66,10 +69,4 @@ export class AtualizarReceitaComponent implements OnInit {
 
 
 
-  voltarParaDetalhes() {
-    // Redirecionar de volta à página de detalhes da receita
-    if (this.receita) {
-      this.router.navigate(['/receitas/detalhes', this.receita.id]);
-    }
-  }
 }

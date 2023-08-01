@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {delay, Observable, of} from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 import { Receita } from '../models/receita';
 import { Categoria } from '../models/categoria';
-
 
 @Injectable({
   providedIn: 'root'
@@ -28,10 +27,7 @@ export class ReceitaService {
   }
 
   getCategorias(): Observable<Categoria[]> {
-    const url =
-      // Substitua pela URL correta da sua API
-      //'https://gerenciamentoapi.onrender.com/api/categorias/'
-      'http://localhost:8080/api/categorias/'
+    const url = 'http://localhost:8080/api/categorias/';
     return this.http.get<Categoria[]>(url);
   }
 

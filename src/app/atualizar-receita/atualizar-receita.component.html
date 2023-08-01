@@ -1,25 +1,29 @@
-<h2>Atualizar Receita</h2>
-
-<form (submit)="atualizarReceita()" *ngIf="receita">
-  <div class="form-group">
-    <label for="data">Data:</label>
-    <input type="date" id="data" name="data" [(ngModel)]="receita.data" required>
-  </div>
-  <div class="form-group">
-    <label for="descricao">Descrição:</label>
-    <input type="text" id="descricao" name="descricao" [(ngModel)]="receita.descricao" required>
-  </div>
-  <div class="form-group">
-    <label for="valor">Valor:</label>
-    <input type="number" id="valor" name="valor" [(ngModel)]="receita.valor" required>
-  </div>
-  <div class="form-group">
-    <label for="categoria">Categoria:</label>
-    <select id="categoria" name="categoria" [(ngModel)]="receita.categoria" required>
-      <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria.nome }}</option>
-    </select>
-  </div>
-  <button type="submit">Atualizar Receita</button>
-</form>
-
-<button (click)="voltarParaDetalhes()">Voltar</button>
+<!-- Seu template HTML atualizado -->
+<div *ngIf="receita">
+  <h2>Atualizar Receita</h2>
+  <!-- Formulário para atualizar a receita -->
+  <form (ngSubmit)="atualizarReceita()">
+    <!-- Campos do formulário -->
+    <div class="form-group">
+      <label for="data">Data:</label>
+      <input type="date" id="data" [(ngModel)]="receita.data" name="data" required>
+    </div>
+    <div class="form-group">
+      <label for="descricao">Descrição:</label>
+      <input type="text" id="descricao" [(ngModel)]="receita.descricao" name="descricao" required>
+    </div>
+    <div class="form-group">
+      <label for="valor">Valor:</label>
+      <input type="number" id="valor" [(ngModel)]="receita.valor" name="valor" required>
+    </div>
+    <div class="form-group">
+      <label for="categoria">Categoria:</label>
+      <select id="categoria" [(ngModel)]="receita.categoria" name="categoria" required>
+        <!-- Opções de categorias -->
+        <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria.nome }}</option>
+      </select>
+    </div>
+    <!-- Botão para enviar o formulário -->
+    <button type="submit">Atualizar Receita</button>
+  </form>
+</div>

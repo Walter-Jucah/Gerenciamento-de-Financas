@@ -4,7 +4,37 @@
   <p><strong>Descrição:</strong> {{ receita.descricao }}</p>
   <p><strong>Valor:</strong> {{ receita.valor | currency }}</p>
   <p><strong>Categoria:</strong> {{ receita.categoria.nome }}</p>
-  <button (click)="editarReceita(receita.id)">Editar</button> <!-- Botão para editar a receita -->
+
+  <!-- Editing Fields -->
+  <div *ngIf="editing">
+    <p>
+      <label for="data">Data:</label>
+      <input type="date" id="data" [(ngModel)]="receita.data" />
+    </p>
+    <p>
+      <label for="descricao">Descrição:</label>
+      <input type="text" id="descricao" [(ngModel)]="receita.descricao" />
+    </p>
+    <p>
+      <label for="valor">Valor:</label>
+      <input type="number" id="valor" [(ngModel)]="receita.valor" />
+    </p>
+    <p>
+      <label for="categoria">Categoria:</label>
+      <select id="categoria" [(ngModel)]="receita.categoria">
+        <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{ categoria.nome }}</option>
+      </select>
+    </p>
+  </div>
+
+  <!-- Edit Button -->
+  <button *ngIf="!editing" (click)="toggleEditing()">Editar</button>
+
+  <!-- Save Button -->
+  <button *ngIf="editing" (click)="salvarEdicao()">Salvar</button>
+
+  <!-- Cancel Button -->
+  <button *ngIf="editing" (click)="toggleEditing()">Cancelar</button>
 </div>
 
 <div *ngIf="!receita">

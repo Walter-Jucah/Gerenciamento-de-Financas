@@ -12,10 +12,8 @@ const routes: Routes = [
   { path: 'receitas/detalhes/:id', component: DetalhesReceitaComponent },
   { path: 'receitas/editar/:id', component: AtualizarReceitaComponent },
 ];
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

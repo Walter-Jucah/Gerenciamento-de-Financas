@@ -1,0 +1,133 @@
+/* lista-receitas.component.css */
+
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilos para os componentes */
+
+h1 {
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: center; /* Centraliza o texto horizontalmente dentro das células */
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilo para centralizar o título */
+.title-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.centered-title {
+  text-align: center;
+}
+
+.container {
+  max-width: 1000px; /* Define a largura máxima do conteúdo */
+  margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+}
+
+.responsive-table {
+  overflow-x: auto; /* Torna a tabela responsiva */
+}
+
+.table-container {
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.table-header {
+  background-color: #f9fafb;
+}
+
+.table-header th {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #374151;
+  text-align: left;
+}
+
+.table-row td {
+  padding: 0.75rem 1.5rem;
+}
+
+/* Estilos para os botões de ação */
+.action-button {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.action-button.blue {
+  color: #FFFFFF;
+}
+
+.action-button.blue:hover {
+  color: #FFFFFF;
+}
+
+.action-button.yellow {
+  color: #f59e0b;
+}
+
+.action-button.yellow:hover {
+  color: #d97706;
+}
+
+.action-button.red {
+  color: #ef4444;
+}
+
+.action-button.red:hover {
+  color: #dc2626;
+}
+
+

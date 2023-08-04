@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -24,17 +24,18 @@ import { ConfirmacaoDialogComponent } from './confirmacao-dialog/confirmacao-dia
     AtualizarReceitaComponent,
     ConfirmacaoDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatSnackBarModule
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FormsModule,
+        AppRoutingModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        ReactiveFormsModule
 
-  ],
+    ],
   exports: [
     MatButtonModule,
     MatDialogModule

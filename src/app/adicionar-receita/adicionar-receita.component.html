@@ -1,30 +1,31 @@
-<h2>Adicionar Nova Receita</h2>
+<!-- adicionar-receita.component.html -->
 
-<form (submit)="adicionarReceita()">
-  <div class="form-group">
-    <label for="data">Data:</label>
-    <input type="date" id="data" name="data" [(ngModel)]="novaReceita.data" required>
-  </div>
-  <div class="form-group">
-    <label for="descricao">Descrição:</label>
-    <input type="text" id="descricao" name="descricao" [(ngModel)]="novaReceita.descricao" required>
-  </div>
-  <div class="form-group">
-    <label for="valor">Valor:</label>
-    <input type="number" id="valor" name="valor" [(ngModel)]="novaReceita.valor" required>
-  </div>
-  <div class="form-group">
-    <label for="categoria">Categoria:</label>
-    <select id="categoria" name="categoria" [(ngModel)]="novaReceita.categoria" required>
-      <option value="Alimentação">Alimentação</option>
-      <option value="Transporte">Transporte</option>
-      <option value="Educação">Educação</option>
-      <option value="Saúde">Saúde</option>
-      <option value="Lazer">Lazer</option>
-      <option value="Outros">Outros</option>
-    </select>
-  </div>
-  <button type="submit">Adicionar Receita</button>
-</form>
+<div class="container">
+  <div class="form-container">
+    <h2>Adicionar Nova Receita</h2>
 
-<button (click)="voltarParaLista()">Voltar</button>
+    <form [formGroup]="receitaForm" (ngSubmit)="adicionarReceita()">
+      <div class="form-group">
+        <label for="data">Data:</label>
+        <input type="date" id="data" formControlName="data" required>
+      </div>
+      <div class="form-group">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" formControlName="descricao" required>
+      </div>
+      <div class="form-group">
+        <label for="valor">Valor:</label>
+        <input type="number" id="valor" formControlName="valor" required>
+      </div>
+      <div class="form-group">
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" formControlName="categoria" required>
+          <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{ categoria.nome }}</option>
+        </select>
+      </div>
+      <div class="button-center">
+        <button type="submit">Adicionar Receita</button>
+      </div>
+    </form>
+  </div>
+</div>

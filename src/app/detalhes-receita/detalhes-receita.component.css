@@ -1,0 +1,53 @@
+/* detalhes-receita.component.css */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container > div {
+  max-width: 600px;
+}
+
+/* Estilos para os campos de edição */
+.editing p {
+  margin-bottom: 10px;
+}
+
+.editing label {
+  font-weight: bold;
+}
+
+.editing input,
+.editing select {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* Estilos para os botões */
+.edit-btn,
+.save-btn,
+.cancel-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.save-btn,
+.cancel-btn {
+  background-color: #f44336;
+}
+
+/* Estilos para o texto de carregamento */
+.loading {
+  margin-top: 20px;
+}

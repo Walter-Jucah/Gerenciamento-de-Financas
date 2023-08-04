@@ -8,7 +8,7 @@ import { Categoria } from '../models/categoria';
   providedIn: 'root'
 })
 export class ReceitaService {
-  private apiUrl = 'http://localhost:8080/api/receitas/'; // Substitua pela URL correta da sua API
+  private apiUrl = 'http://localhost:8080/api/receitas/'; // URL da API
 
   constructor(private http: HttpClient) {}
 
@@ -22,9 +22,10 @@ export class ReceitaService {
   }
 
   adicionarReceita(receita: Receita): Observable<Receita> {
-    // Simulando a adição da receita com um pequeno atraso de 1 segundo
-    return of(receita).pipe(delay(1000));
+    const url = `${this.apiUrl}`;
+    return this.http.post<Receita>(url, receita);
   }
+
 
   getCategorias(): Observable<Categoria[]> {
     const url = 'http://localhost:8080/api/categorias/';

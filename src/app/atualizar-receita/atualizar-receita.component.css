@@ -1,0 +1,48 @@
+/* atualizar-receita.component.css */
+
+/* Centralizar o formulário horizontalmente */
+.container {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Limitar a largura do formulário */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilização do botão de atualização */
+button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilização das mensagens do MatSnackBar */
+.snackbar-message {
+  background-color: #333;
+  color: white;
+}
+
+/* Limitar a largura do formulário */
+.form-container {
+  max-width: 400px;
+  width: 100%;
+}

@@ -1,36 +1,59 @@
-h2 {
-    color: #007bff;
+/* adicionar-receita.component.css */
+
+/* Centralizar o formulário horizontalmente */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-form {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
+/* Limitar a largura do formulário */
+.form-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 1rem;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-div {
-    margin: 10px 0;
+.form-group {
+  margin-bottom: 1rem;
 }
 
-label {
-    font-weight: bold;
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-input, select {
-    width: 100%;
-    padding: 5px;
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-button {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+/* Centralizar o botão de adicionar receita */
+.button-center {
+  display: flex;
+  justify-content: center;
 }
 
-button:hover {
-    background-color: #0056b3;
+/* Estilização do botão de adicionar receita */
+.button-center button[type="submit"] {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px;
+}
+
+.button-center button[type="submit"]:hover {
+  background-color: #0056b3;
 }

@@ -1,42 +1,48 @@
-<div *ngIf="receita">
-  <h2>Detalhes da Receita</h2>
-  <p><strong>Data:</strong> {{ receita.data | date }}</p>
-  <p><strong>Descrição:</strong> {{ receita.descricao }}</p>
-  <p><strong>Valor:</strong> {{ receita.valor | currency }}</p>
-  <p><strong>Categoria:</strong> {{ receita.categoria.nome }}</p>
+<!-- detalhes-receita.component.html -->
 
-  <!-- Editing Fields -->
-  <div *ngIf="editing">
-    <p>
-      <label for="data">Data:</label>
-      <input type="date" id="data" [(ngModel)]="receita.data" />
-    </p>
-    <p>
-      <label for="descricao">Descrição:</label>
-      <input type="text" id="descricao" [(ngModel)]="receita.descricao" />
-    </p>
-    <p>
-      <label for="valor">Valor:</label>
-      <input type="number" id="valor" [(ngModel)]="receita.valor" />
-    </p>
-    <p>
-      <label for="categoria">Categoria:</label>
-      <select id="categoria" [(ngModel)]="receita.categoria">
-        <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{ categoria.nome }}</option>
-      </select>
-    </p>
+<div class="w-full flex justify-center">
+  <div class="max-w-md">
+    <div *ngIf="receita">
+      <h2 class="text-2xl font-bold mb-4">Detalhes da Despesa</h2>
+      <p><strong>Data:</strong> {{ receita.data | date }}</p>
+      <p><strong>Descrição:</strong> {{ receita.descricao }}</p>
+      <p><strong>Valor:</strong> {{ receita.valor | currency }}</p>
+      <p><strong>Categoria:</strong> {{ receita.categoria.nome }}</p>
+
+      <!-- Editing Fields -->
+      <div *ngIf="editing" class="editing">
+        <p>
+          <label for="data">Data:</label>
+          <input type="date" id="data" [(ngModel)]="receita.data" />
+        </p>
+        <p>
+          <label for="descricao">Descrição:</label>
+          <input type="text" id="descricao" [(ngModel)]="receita.descricao" />
+        </p>
+        <p>
+          <label for="valor">Valor:</label>
+          <input type="number" id="valor" [(ngModel)]="receita.valor" />
+        </p>
+        <p>
+          <label for="categoria">Categoria:</label>
+          <select id="categoria" [(ngModel)]="receita.categoria" class="w-full">
+            <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{ categoria.nome }}</option>
+          </select>
+        </p>
+      </div>
+
+      <!-- Edit Button -->
+      <button *ngIf="!editing" (click)="toggleEditing()" class="edit-btn">Editar</button>
+
+      <!-- Save Button -->
+      <button *ngIf="editing" (click)="salvarEdicao()" class="save-btn">Salvar</button>
+
+      <!-- Cancel Button -->
+      <button *ngIf="editing" (click)="toggleEditing()" class="cancel-btn">Cancelar</button>
+    </div>
   </div>
-
-  <!-- Edit Button -->
-  <button *ngIf="!editing" (click)="toggleEditing()">Editar</button>
-
-  <!-- Save Button -->
-  <button *ngIf="editing" (click)="salvarEdicao()">Salvar</button>
-
-  <!-- Cancel Button -->
-  <button *ngIf="editing" (click)="toggleEditing()">Cancelar</button>
 </div>
 
-<div *ngIf="!receita">
-  <p>Carregando detalhes da receita...</p>
+<div *ngIf="!receita" class="w-full flex justify-center">
+  <p>Carregando detalhes da despesa...</p>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Receita } from '../models/receita';
 import { Categoria } from '../models/categoria';
@@ -11,17 +12,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./adicionar-receita.component.css']
 })
 export class AdicionarReceitaComponent implements OnInit {
-  novaReceita: Receita = new Receita(0, new Date(), '', 0, new Categoria(0, '')); // Crie uma nova instância de Receita
+  receitaForm!: FormGroup; // Adicione a assertiva de atribuição definitiva aqui
   categorias: Categoria[] = [];
 
   constructor(
     private receitaService: ReceitaService,
     private router: Router,
-    private snackBar: MatSnackBar // Injete o MatSnackBar
+    private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder // Injete o FormBuilder
   ) {}
 
   ngOnInit() {
-    // Carregar as categorias disponíveis ao inicializar o componente
+    // Inicialize o formulário reativo
+    this.receitaForm = this.formBuilder.group({
+      data: ['', Validators.required],
+      descricao: ['', Validators.required],
+      valor: ['', Validators.required],
+      categoria: ['', Validators.required]
+    });
+
+    // Carregue as categorias disponíveis quando o componente for inicializado
     this.carregarCategorias();
   }
 
@@ -34,26 +44,46 @@ export class AdicionarReceitaComponent implements OnInit {
 
   // Crie um método para adicionar uma nova receita
   adicionarReceita() {
-    this.receitaService.adicionarReceita(this.novaReceita).subscribe({
-      next: (receita) => {
-        this.novaReceita = new Receita(0, new Date(), '', 0, new Categoria(0, '')); // Limpa os campos após a adição da receita
-        console.log('Receita adicionada:', receita);
+    // Verifique se o formulário é válido
+    if (this.receitaForm.valid) {
+      // Obtenha os valores dos campos do formulário
+      const data = this.receitaForm.get('data')!.value;
+      const descricao = this.receitaForm.get('descricao')!.value;
+      const valor = this.receitaForm.get('valor')!.value;
+      const categoria = this.receitaForm.get('categoria')!.value;
 
-        // Exibe o SnackBar com a mensagem "Receita adicionada"
-        this.snackBar.open('Receita adicionada', 'Fechar', {
-          duration: 3000, // Duração em milissegundos
-          verticalPosition: 'top', // Posição vertical (top ou bottom)
-        });
+      // Crie um novo objeto Receita com os valores do formulário
+      const novaReceita: Receita = {
+        id: 0, // O ID será gerado pelo backend
+        data: new Date(data),
+        descricao: descricao,
+        valor: valor,
+        categoria: categoria
+      };
 
-        this.voltarParaLista(); // Após adicionar a receita, volte para a lista
-      },
-      error: (error) => {
-        console.error('Erro ao adicionar receita:', error);
-      },
-      complete: () => {
-        console.log('Adição da receita concluída.');
-      }
-    });
+      console.log('Nova Receita:', novaReceita);
+
+      // Chame o serviço para adicionar a receita
+      this.receitaService.adicionarReceita(novaReceita).subscribe({
+        next: (receita) => {
+          console.log('Receita adicionada:', receita);
+
+          // Exibe o SnackBar com a mensagem "Receita adicionada"
+          this.snackBar.open('Receita adicionada', 'Fechar', {
+            duration: 3000, // Duração em milissegundos
+            verticalPosition: 'top', // Posição vertical (top ou bottom)
+          });
+
+          this.voltarParaLista(); // Após adicionar a receita, volte para a lista
+        },
+        error: (error) => {
+          console.error('Erro ao adicionar receita:', error);
+        },
+        complete: () => {
+          console.log('Adição da receita concluída.');
+        }
+      });
+    }
   }
 
   // Crie um método para navegar de volta para a lista de receitas
